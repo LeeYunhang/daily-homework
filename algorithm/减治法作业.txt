@@ -1,0 +1,110 @@
+
+
+# 插入排序的递归算法
+function insertSort(array, start, end):
+	if start = end: return
+
+	insertSort(array, start, end - 1)
+	for i <- end - 2 to start:
+		if array[i + 1] < array[i]:
+			# 交换
+			swap(array[i+1], array[i])
+		end
+	end
+end
+
+# 选择排序的递归算法
+function selectSort(array, start, end):
+	if start = end: return
+	min = MAX  # 最大值
+	minIndex = -1
+
+	for i <- start to end - 1:
+		if array[start] < min:
+			minIndex := i
+		end
+	end
+
+	# 交换
+	swap(array[start], array[minIndex])
+end
+
+
+# 4.1.6  队伍排序算法  ---插入排序
+function teamSort(array, start, end):
+	if start = end: return
+
+	teamSort(array, start, end - 1)
+	for i <- end - 2 to 0:
+		# 如果前一个输掉的队伍包括后面一个的话
+		if array[i].losts.contains(array[i+1]):
+			swap(array[i], array[i +1])
+		end
+	end
+end
+
+
+#  写出拓扑排序源删除算法的伪代码
+function topoSort(g):
+	gCopy := copy(g)
+	for i <- 0 to gCopy.vertexs.length - 1:
+		if gCopy.vertexs[i].in = 0:
+			return [gCopy.vertexs[i], ...[topoSort(gCopy.deleteVertex(i))]]
+		end
+	end
+end
+
+#4.5.3 
+# 写出非递归的快速选择的算法
+function quickSelect(array):
+	target = array.length / 2  # 目标位置
+	start = 0
+	end = array.length
+
+	while TRUE:
+		l = start
+		s = l
+		pivot = array[l]
+		for i <- l + 1 to end - 1:
+			if array[i] < p:
+				swap(array[i], array[l++])
+			else
+				swap(array[i], array[s++])
+		end
+		swap(array[start], array[s])
+
+		if target = s:
+			return array[target]
+		if s < target:
+			start = s
+		else:
+			end = s
+	end
+end
+
+
+
+
+
+# 4.2.1 用DFS解决拓扑排序的问题 返回一个拓扑排序
+function topo(g):
+	vertexs = g.vertexs
+	stack = new Stack()
+	stack.push(vertexs)
+	result = []    # 一个空数组
+
+	while not stack.isEmpty():
+		v = stack.pop()
+		outs = v.outs
+		result.add(vertexs.indexOf(v))
+		for i <- 0 to outs:
+			if outs[i].isVisited = TRUE:
+				return null   #  出现回边
+			stack.push(outs[i])
+		end
+	end
+
+	return result.reverse()
+end
+
+
