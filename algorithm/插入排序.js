@@ -63,7 +63,7 @@ function quickSelectRec(arr, k, l = 0, r = arr.length) {
 
   for (let i = l; i < r; ++i) {
     if (arr[i] < pivot) {
-      ++s
+      ++s 
       let tmp = arr[i]
       arr[i] = arr[s]
       arr[s] = tmp
@@ -72,7 +72,7 @@ function quickSelectRec(arr, k, l = 0, r = arr.length) {
 
   let tmp = arr[l]
   arr[l] = arr[s]
-  arr[s] = tmp
+  arr[s] = tmpd
 
   if (s === k) {
     return arr[s]
