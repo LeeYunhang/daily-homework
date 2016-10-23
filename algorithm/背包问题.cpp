@@ -15,7 +15,7 @@ int V[4] = {12, 10, 20, 15};
 
 // 递归版本(设置了备忘录)
 int knapsack(int m, int n) {
-    if (m == -1 || n == -1) { return 0; }
+    if (!~m || !~n) { return 0; }
     else if (c[n][m]) { return c[n][m]; }
 
     int a = knapsack(m, n-1), b = -1;
